@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyAppFilmSearch</string>
+    <string name="toolbar_settings">Настройки</string>
+    <string name="toolbar_info">О приложении</string>
+    <string name="title_search">Поиск</string>
+    <string name="title_home">Главная</string>
+    <string name="title_profile">Аккаунт</string>
 </resources>
