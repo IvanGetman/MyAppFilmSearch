@@ -1,16 +1,12 @@
 package com.getman.myappfilmsearch
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Switch
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.getman.myappfilmsearch.databinding.ActivityMainBinding
 import com.getman.myappfilmsearch.ui.home.HomeFragment
 import com.getman.myappfilmsearch.ui.profile.ProfileFragment
 import com.getman.myappfilmsearch.ui.search.SearchFragment
-import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

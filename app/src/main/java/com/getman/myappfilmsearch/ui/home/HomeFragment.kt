@@ -6,14 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import com.getman.myappfilmsearch.R
 import com.getman.myappfilmsearch.databinding.HomeFragmentBinding
-import com.getman.myappfilmsearch.databinding.ProfileFragmentBinding
-import com.getman.myappfilmsearch.ui.profile.ProfileViewModel
-import com.getman.myappfilmsearch.ui.search.SearchFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
@@ -23,12 +19,16 @@ class HomeFragment : Fragment() {
     companion object {
         fun newInstance() = HomeFragment()
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        val textExample = binding.textHome
-        viewModel.text.observe(viewLifecycleOwner, Observer { textExample.text = it })
+
+        binding.filmsList.adapter = FilmsCategoriesAdapter()
+
         return binding.root
     }
 
