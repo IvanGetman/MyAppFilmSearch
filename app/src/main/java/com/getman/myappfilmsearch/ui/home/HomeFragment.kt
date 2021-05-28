@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.getman.myappfilmsearch.R
 import com.getman.myappfilmsearch.databinding.HomeFragmentBinding
 
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment() {
 
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
@@ -36,4 +35,5 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         super.onDestroyView()
         _binding = null
     }
+
 }
