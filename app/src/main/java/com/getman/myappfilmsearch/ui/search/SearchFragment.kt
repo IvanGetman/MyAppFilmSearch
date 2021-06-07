@@ -1,36 +1,27 @@
 package com.getman.myappfilmsearch.ui.search
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.getman.myappfilmsearch.R
 import com.getman.myappfilmsearch.databinding.SearchFragmentBinding
+import com.getman.myappfilmsearch.viewBinding
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(R.layout.search_fragment) {
 
-    private var _binding: SearchFragmentBinding? = null
-    private val binding get() = _binding!!
+    private val viewBinding: SearchFragmentBinding by viewBinding(SearchFragmentBinding::bind)
 
-    private lateinit var viewModel: SearchViewModel
+    private val viewModel: SearchViewModel by viewModels()
 
     companion object {
         fun newInstance() = SearchFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        _binding = SearchFragmentBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        val textExample = binding.textSearch
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val textExample = viewBinding.textSearch
         viewModel.text.observe(viewLifecycleOwner, Observer { textExample.text = it })
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

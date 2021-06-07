@@ -1,41 +1,28 @@
 package com.getman.myappfilmsearch.ui.filmdescription
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
+import com.getman.myappfilmsearch.R
 import com.getman.myappfilmsearch.databinding.FilmDescriptionFragmentBinding
+import com.getman.myappfilmsearch.viewBinding
 
-class FilmDescriptionFragment : Fragment() {
+class FilmDescriptionFragment : Fragment(R.layout.film_description_fragment) {
 
-    private var _binding: FilmDescriptionFragmentBinding? = null
-    private val binding get() = _binding!!
+    private val viewBinding: FilmDescriptionFragmentBinding by viewBinding(
+        FilmDescriptionFragmentBinding::bind
+    )
 
-    private lateinit var viewModel: FilmDescriptionViewModel
+    private val viewModel: FilmDescriptionViewModel by viewModels()
 
     companion object {
         fun newInstance() = FilmDescriptionFragment()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FilmDescriptionFragmentBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this).get(FilmDescriptionViewModel::class.java)
-        val textFilmName = binding.filmName
-        val textFilmDescription = binding.filmDescription
-        viewModel.text.observe(viewLifecycleOwner, Observer { textFilmName.text = it })
-        viewModel.text2.observe(viewLifecycleOwner, Observer { textFilmDescription.text = it })
-        return binding.root
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        viewBinding.root
     }
-
 }

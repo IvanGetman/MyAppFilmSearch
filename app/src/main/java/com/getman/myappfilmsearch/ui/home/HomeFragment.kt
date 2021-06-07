@@ -1,39 +1,35 @@
 package com.getman.myappfilmsearch.ui.home
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import com.getman.myappfilmsearch.R
 import com.getman.myappfilmsearch.databinding.HomeFragmentBinding
+import com.getman.myappfilmsearch.viewBinding
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 
-class HomeFragment : Fragment() {
 
-    private var _binding: HomeFragmentBinding? = null
-    private val binding get() = _binding!!
+class HomeFragment : Fragment(R.layout.home_fragment) {
 
-    private lateinit var viewModel: HomeViewModel
+    private val viewBinding: HomeFragmentBinding by viewBinding(HomeFragmentBinding::bind)
+
+    private val viewModel: HomeViewModel by viewModels()
 
     companion object {
         fun newInstance() = HomeFragment()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = HomeFragmentBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        binding.filmsList.adapter = FilmsCategoriesAdapter()
+        viewBinding.filmsList.adapter = FilmsCategoriesAdapter()
 
-        return binding.root
+        Snackbar.make(
+            view,
+            R.string.app_name,
+            BaseTransientBottomBar.LENGTH_LONG
+        ).show()
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }
