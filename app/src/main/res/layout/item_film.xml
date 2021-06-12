@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/card_film_width"
+    android:layout_height="@dimen/movies_list_height"
+    android:layout_margin="@dimen/small_margin"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title_item_film"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@id/image_item_film"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="Name film" />
+
+        <ImageView
+            android:id="@+id/image_item_film"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_film_height"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_film"
+            tools:src="@drawable/ic_baseline_info_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
